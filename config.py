@@ -10,4 +10,4 @@ config = configparser.ConfigParser()
 
 config.read(str(application_path)+'/config.ini')
 
-discordtoken = config['SETTINGS']['discordtoken'].strip()
+discordtoken = os.getenv('DISCORD_TOKEN')
