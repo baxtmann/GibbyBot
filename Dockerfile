@@ -1,4 +1,4 @@
-FROM python:3
+FROM ubuntu:bionic
 
 RUN echo "YOU MUST ENTER BOT TOKEN BEFORE RUNNING DOCKER!!"
 
