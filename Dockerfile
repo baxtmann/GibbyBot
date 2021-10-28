@@ -1,4 +1,4 @@
-FROM python:3.18.12-buster
+FROM python:3.8.12-buster
 
 RUN echo "YOU MUST ENTER BOT TOKEN BEFORE RUNNING DOCKER!!"
 
