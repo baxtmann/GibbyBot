@@ -8,7 +8,9 @@ RUN cd GibbyBot/
 
 RUN apt-get update
 
-RUN apt-get install -y software-properties-common python3-pip git
+RUN apt-get install -y software-properties-common python3.8 git
+
+RUN apt=get install -y python3-pip
 
 RUN pip3 install python-dotenv
 
