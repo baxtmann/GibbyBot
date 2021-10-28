@@ -8,7 +8,11 @@ RUN cd GibbyBot/
 
 RUN apt-get update
 
+RUN add-apt-repository ppa:deadsnakes/ppa
+
 RUN apt-get install -y software-properties-common python3.8 git
+
+RUN update-alternatives  --set python /usr/bin/python3.8
 
 RUN apt-get install -y python3-pip
 
