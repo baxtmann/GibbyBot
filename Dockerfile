@@ -1,11 +1,19 @@
-FROM python:3
+FROM python:3.8.12-buster
 
-RUN echo "YOU MUST ENTER BOT TOEKN BEFORE RUNNING DOCKER!!"
+RUN echo "YOU MUST ENTER BOT TOKEN BEFORE RUNNING DOCKER!!"
 
 ADD . / GibbyBot/
 
 RUN cd GibbyBot/
 
-RUN pip3 install -r GibbyBot/requirements.txt
+RUN apt-get update
 
-CMD [ "python", "./GibbyBot/start.py" ]
+RUN apt-get install -y software-properties-common git
+
+RUN pip3 install python-dotenv
+
+RUN pip3 install -U git+https://github.com/Pycord-Development/pycord
+
+RUN echo "GIBBY TOKEN = ""$GIBBY_TOKEN" >> .env
+
+CMD [ "python", "./GibbyBot/gibby.py" ]
