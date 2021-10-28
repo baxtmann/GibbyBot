@@ -12,11 +12,7 @@ RUN apt-get install -y software-properties-common python3.8 git
 
 RUN add-apt-repository ppa:deadsnakes/ppa
 
-RUN sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.6
-
-RUN sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.8
-
-RUN update-alternatives  --set python /usr/bin/python3.8
+RUN update-alternatives --install /usr/bin/python3.8 python /usr/bin/python3 1
 
 RUN apt-get install -y python3-pip
 
