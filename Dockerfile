@@ -1,4 +1,4 @@
-FROM ubuntu:bionic
+FROM python:3.18.12-buster
 
 RUN echo "YOU MUST ENTER BOT TOKEN BEFORE RUNNING DOCKER!!"
 
@@ -8,13 +8,7 @@ RUN cd GibbyBot/
 
 RUN apt-get update
 
-RUN apt-get install -y software-properties-common python3.8 git
-
-RUN add-apt-repository ppa:deadsnakes/ppa
-
-RUN update-alternatives --install /usr/bin/python3.8 python /usr/bin/python3 1
-
-RUN apt-get install -y python3-pip
+RUN apt-get install -y software-properties-common git
 
 RUN pip3 install python-dotenv
 
