@@ -3,6 +3,8 @@
 Gibbybot is a Discord bot written in python that will return various gibby-related responces!
 This bot is completly open source, feel free to do whatever you want with it! My only request is that if you do anything cool with it, I want to hear about it! Shoot me a tweet @BrandonAxtmann or email me at baxtmann@jumpstartlabs.co
 
+Note: / commands may take up to an hour to show up on your discord server. This is due to how Discord disovers and registers / commands. 
+
 ## Commands for GibbyBot
 See the below commands that are available in the current version of Gibbybot. If you have any suggestions for other commands, create a suggestion on Github!
 *Note* The command prefix for the bot is "!", but this bot currently does not use the command prefix. The bot checks every message sent to see if it matched any of the criteria it is seaching for.
