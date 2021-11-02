@@ -37,6 +37,6 @@ To run in a screen session:
 
 ### Windows Guide TBA
 
-If you have any issues running gibbybot, or have any questions, feel free to open an issue and I will try to help you out!
+You should be able to run on windows via Docker 100% - and same for just running the .py files as well. 
 
 # And don't forget to check out [spencerbot](https://github.com/baxtmann/spencerbot)! 
