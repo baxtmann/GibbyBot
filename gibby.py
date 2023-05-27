@@ -5,6 +5,7 @@ import random
 
 from dotenv import load_dotenv
 import os
+import openai
 
 # --------------------- SETUP --------------------- #
 
@@ -27,6 +28,8 @@ gibby_messages = ["My Mom thinks I'm awesome!",
                   "I invented cheesecake!",
                   "Oh really? I have that too!"]
 
+# Add this to your setup
+openai.api_key = os.getenv('OPENAI_KEY')
 
 # --------------------- SLASH COMMANDS --------------------- #
 
@@ -49,7 +52,7 @@ async def gibbytalk(ctx):
     await ctx.respond("Gibby is ready to unleash notification hell!")
 
     # spam a random gibby message
-    for x in range(50):
+    for x in range(10):
         rand_spam = random.randint(0, len(gibby_messages) - 1)
         msg = gibby_messages[rand_spam]
 
@@ -57,6 +60,40 @@ async def gibbytalk(ctx):
 
         # wait a few seconds
         await asyncio.sleep(5)
+
+@client.slash_command(guild_ids=guild_ids, name='aigibby', description='Gibby AI')
+async def aigibby(ctx, *, user_message: str):
+    # Send initial message
+    initial_message = await ctx.respond('Processing your request...', ephemeral=False)
+
+    # Model
+    model = "gpt-3.5-turbo"
+
+    # Messages for the conversation
+    messages = [
+        {
+            "role": "system",
+            "content": "You are Gibby from iCarly. Please only respond to questions/interactions as Gibby would. If you don't know what gibby would say, say a random Gibby quote."
+        },
+        {
+            "role": "user",
+            "content": user_message
+        }
+    ]
+
+    try:
+        # Make the API call
+        response = openai.ChatCompletion.create(
+            model=model,
+            messages=messages
+        )
+
+        # Edit the initial message with the AI's response
+        await initial_message.edit(content=response['choices'][0]['message']['content'])
+
+    except Exception as e:
+        # Handle any errors that occurred during the API call
+        await initial_message.edit(content=f"An error occurred: {e}")
 
 
 # --------------------- EVENTS --------------------- #
